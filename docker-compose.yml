@@ -17,9 +17,15 @@ services:
       - web
       - internal
     depends_on:
-      - api-ordermgmt
+      - api01
+      - api02
     restart: unless-stopped
-  api-ordermgmt:
+  api01:
+    image: repasscloud/api.engine:rev5
+    restart: unless-stopped
+    networks:
+      - internal
+  api02:
     image: repasscloud/api.engine:rev5
     restart: unless-stopped
     networks:
