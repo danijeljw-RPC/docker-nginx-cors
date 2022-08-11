@@ -20,7 +20,7 @@ services:
       - api-ordermgmt
     restart: unless-stopped
   api-ordermgmt:
-    image: "repasscloud/ordermgmt"
+    image: repasscloud/api.engine:rev5
     restart: unless-stopped
     networks:
       - internal
