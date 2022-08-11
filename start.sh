@@ -6,7 +6,7 @@ if [ ! -d "/data/caddy" ]
 then
     sudo mkdir -p /data/caddy
 fi
-cp ./caddy/Caddyfile /data/caddy/Caddyfile
+sudo cp caddy/Caddyfile /data/caddy/Caddyfile
 
 
 if [ ! -d "/data/caddy/data" ] 
