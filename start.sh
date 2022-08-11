@@ -8,10 +8,14 @@ then
 fi
 sudo cp caddy/Caddyfile /data/caddy/Caddyfile
 
-
 if [ ! -d "/data/caddy/data" ] 
 then
     sudo mkdir -p /data/caddy/data
+fi
+
+if [ ! -d "/data/caddy/datassl" ] 
+then
+    sudo mkdir -p /data/caddy/datassl
 fi
 
 if [ ! -d "/data/caddy/config" ] 

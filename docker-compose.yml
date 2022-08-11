@@ -14,7 +14,7 @@ services:
       - "443:443"
     volumes:
       - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
-      - /data/caddy/data:/data
+      - /data/caddy/datassl:/data
       - /data/caddy/config:/config
     networks:
       - web
