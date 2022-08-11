@@ -6,15 +6,31 @@ networks:
     external: false
     driver: bridge
 services:
+  caddy:
+    image: "caddy:2.4.6-alpine"
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /data/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - /data/caddy/data:/data
+      - /data/caddy/config:/config
+    networks:
+      - web
+      - internal
+    depends_on:
+      - nginx
+      - api01
+      - api02
   nginx:
     build:
       context: ./nginx
       dockerfile: Dockerfile
     container_name: nginx
     ports:
-      - "80:80"
+      - "8080"
     networks:
-      - web
       - internal
     depends_on:
       - api01
@@ -30,4 +46,3 @@ services:
     restart: unless-stopped
     networks:
       - internal
-    
