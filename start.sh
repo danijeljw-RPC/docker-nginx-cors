@@ -3,9 +3,9 @@
 echo "Angler-Bamboo-Bunkbed-Silliness6" | sudo -S ls
 
 git fetch --all
-git branch -d backup-master
-git branch backup-master
-git reset --hard origin/master
+git reset --hard
+git clean -fxd
+git fetch --all
 git pull
 
 if [ ! -d "/data/caddy" ] 
