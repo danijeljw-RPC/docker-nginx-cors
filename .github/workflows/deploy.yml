@@ -26,7 +26,7 @@ jobs:
 
     - name: Update public server images
       run: |
-        ssh -o "StrictHostKeyChecking=no" -i ./secrets/.ssh/user_host_rsa $env:URI_BRITNEY './docker-nginx-cors/start.sh'
+        ssh -o "StrictHostKeyChecking=no" -i ./secrets/.ssh/user_host_rsa admin-rpc@appease-trodden-upwind.optechx-data.com './docker-nginx-cors/start.sh'
       env:
         SSH_USER_URI: ${{ secrets.URI_BRITNEY }}
 
