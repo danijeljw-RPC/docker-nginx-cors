@@ -1,6 +1,11 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
+
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+
 
 echo "Angler-Bamboo-Bunkbed-Silliness6" | sudo -S ls
+
+cd $SCRIPT_DIR
 
 git fetch --all
 git reset --hard
