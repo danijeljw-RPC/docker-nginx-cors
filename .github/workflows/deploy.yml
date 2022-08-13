@@ -1,0 +1,30 @@
+name: PROD:Build_Deploy
+
+on:
+  pull_request:
+    branches: [ 'main' ]
+  workflow_dispatch:
+
+jobs:
+
+  COMPOSE_BUILD_ONLY:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: GPG Decrypt
+      shell: pwsh
+      run: |
+        mkdir -p ./secrets/.ssh
+        gpg --yes --batch --passphrase=$env:KEY_BRITNEY ./user_host_rsa.gpg
+        Move-Item -Path ./user_host_rsa -Destination ./secrets/.ssh/user_host_rsa
+        chmod 700 ./secrets/.ssh
+        chmod 400 ./secrets/.ssh/user_host_rsa
+      env:
+        JSONDATA: ${{ secrets.KEY_BRITNEY }}
+
+    - name: Update public server images
+      run: |
+        ssh -o "StrictHostKeyChecking=no" -i ./secrets/.ssh/user_host_rsa $env:URI_BRITNEY './docker-nginx-cors/start.sh'
+      env:
+        SSH_USER_URI: ${{ secrets.URI_BRITNEY }}
+
