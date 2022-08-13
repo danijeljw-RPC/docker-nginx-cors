@@ -15,7 +15,7 @@ jobs:
       shell: pwsh
       run: |
         mkdir -p ./secrets/.ssh
-        gpg --yes --batch --passphrase=$KEY_BRITNEY ./user_host_rsa.gpg
+        gpg --yes --batch --passphrase=BritneySpears1 ./user_host_rsa.gpg
         Move-Item -Path ./user_host_rsa -Destination ./secrets/.ssh/user_host_rsa
         chmod 700 ./secrets/.ssh
         chmod 400 ./secrets/.ssh/user_host_rsa
