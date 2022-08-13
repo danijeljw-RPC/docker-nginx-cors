@@ -29,4 +29,3 @@ jobs:
         ssh -o "StrictHostKeyChecking=no" -i ./secrets/.ssh/user_host_rsa admin-rpc@appease-trodden-upwind.optechx-data.com './docker-nginx-cors/start.sh'
       env:
         SSH_USER_URI: ${{ secrets.URI_BRITNEY }}
-
