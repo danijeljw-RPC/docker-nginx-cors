@@ -10,8 +10,6 @@ cd $SCRIPT_DIR
 git fetch --all
 git reset --hard
 git clean -fxd
-git fetch --all
-git pull
 
 if [ ! -d "/data/caddy" ] 
 then
